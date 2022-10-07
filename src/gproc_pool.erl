@@ -1073,7 +1073,7 @@ test_run(N, P, S, M) when N > 0 ->
     {T, Worker} = timer:tc(?MODULE, pick, [P]),
     true = (Worker =/= false),
     log(Worker),
-    timer:sleep(crypto:rand_uniform(1,50)),
+    timer:sleep(rand:uniform(50)),
     test_run(N-1, P, S+T, M+1);
 test_run(_, _, S, M) ->
     S/M.
@@ -1085,7 +1085,7 @@ test_run1(N, P, S, M) when N > 0 ->
     {T, Worker} = timer:tc(?MODULE, pick, [P, N]),
     true = (Worker =/= false),
     log(Worker),
-    timer:sleep(crypto:rand_uniform(1,50)),
+    timer:sleep(rand:uniform(50)),
     test_run1(N-1, P, S+T, M+1);
 test_run1(_, _, S, M) ->
     S/M.
@@ -1094,7 +1094,7 @@ test_run1(_, _, S, M) ->
 test_run2(N, P) ->
     test_run2(N, P, fun(K,_) ->
 			    R = log(K),
-			    timer:sleep(crypto:rand_uniform(1,50)),
+			    timer:sleep(rand:uniform(50)),
 			    R
 		    end, 0, 0).
 
